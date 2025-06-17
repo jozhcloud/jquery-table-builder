@@ -4,7 +4,7 @@ jquery-table-builder
 #### Dependencies
 - jQuery
 - [jquery-resizable-columns.js](https://github.com/dobtco/jquery-resizable-columns/) Not necessary, only used when resizing column width.
-- [jquery-pagination.js]() Not necessary, only used when resizing column width.
+- [jquery-pagination.js](https://github.com/jozhcloud/jquery-pagination/) Not necessary, only used when resizing column width.
 
 #### Simple Usage
   
