@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery Table Builder</title>
+  <link rel="stylesheet" href="dist/jquery.tableBuilder.css">
+</head>
+<body>
+  <div id="tableContainer1"></div>
+  <div id="simple-container"></div>
+  <div id="resiable-container"></div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- Plugin -->
+  <script src="dist/jquery.tableBuilder.min.js"></script>
+  <script>
+    $(function(){
+      loadTableData();
+    });
+
+    function loadTableData(parameters = {}) {
+      const demo_data = [
+        { id: 1, name: "jozh", age: 35 },
+        { id: 2, name: "yearly", age: 36 }
+      ];
+
+      const dataUrl = `data:application/json;base64,${btoa(JSON.stringify({code: 0, data: demo_data}))}`;
+
+      parameters.page = parameters.page || 1;
+      parameters.pageSize = parameters.pageSize || 10;
+      parameters.sort = parameters.sort || {}; // {age: 'desc'}
+      fetch(dataUrl, parameters)
+      .then(res => res.json())
+      .then(d => {
+        $("#tableContainer1").tableBuilder({
+          title: "demo",
+          thSet: [
+            {text: "ID", field: "id"},
+            {text: "Name", field: "name", copiable: true},
+            {text: "Age", field: "age", sortable: true},
+            {text: "Option", options: [
+              {
+                text: "moreinfo",
+                label: "a",
+                attr: {
+                  "href": "/moreinfo/__id__",
+                  "data-name": "__name__",
+                  "onclick": "moreinfo('__name__')"
+                }
+              }
+            ]}
+          ],
+          dataSet: d.data,
+          parameters: parameters,
+          loadingPageDataFunName: "loadTableData"
+        });
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+/* Global  */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Table Builder  */
+.table-head {
+    height: 42px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fffff4;
+    border: 1px solid #eee;
+    border-bottom: none;
+}
+
+.table {
+    font-size: 12px;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table tr.odd-row {
+    background-color: #f7f7f7;
+}
+
+.table th, .table td {
+    border: 1px solid #eee;
+}
+
+.table th {
+    height: 40px;
+    background: #F5F6FA;
+}
+
+.table td {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 6px 5px;
+    font-size: 12px;
+    position: relative;
+    word-wrap: break-word;
+    word-break: break-all;
+    vertical-align: middle;
+}
+
+/* Column data Sort */
+.table th.csr-pointer[data-sort] {
+    cursor: pointer;
+}
+
+.table th.csr-pointer[data-sort="asc"] .sort-asc, .table th.csr-pointer[data-sort="desc"] .sort-desc {
+    fill: #6698ff;
+}
+
+.table th .sort-icon {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.table th .sort-indicator {
+    width: 12px;
+    height: 14px;
+}
+
+.table th .sort-indicator polygon {
+    fill: #ccc;
+}
+
+.table th .sort-indicator polygon.sort-asc {
+    transform: scale(0.8) translateY(-15px);
+}
+
+.table th .sort-indicator polygon.sort-desc {
+    transform: scale(0.8) translateY(55px);
+}
+
+/* Copiable */
+.table td.copiable {
+    padding-right: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.table td.copiable .copy-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: contain;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.table tr.odd-row td.copiable .copy-icon {
+    background-color: #f7f7f7;
+}
+
+.table td.copiable .copy-indicator {
+    width: 16px;
+    height: 42px;
+    fill: none;
+    opacity: 0.3;
+}
+
+.table td.copiable .copy-indicator:hover, .table td.copiable .copy-indicator.copied {
+    opacity: 1;
+}
